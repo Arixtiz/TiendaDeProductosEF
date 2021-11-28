@@ -11,12 +11,12 @@ namespace CapaNegocio
 {
     public class CN_Productos
     {
-        private CD_Productos objetoCD = new CD_Productos();
+        readonly CD_Productos objetoCD = new();
 
         public DataTable MostrarProductos()
         {
-            DataTable dt = new DataTable();
-            dt = objetoCD.Mostrar();
+            _ = new DataTable();
+            DataTable dt = objetoCD.Mostrar();
 
             return dt;
         }

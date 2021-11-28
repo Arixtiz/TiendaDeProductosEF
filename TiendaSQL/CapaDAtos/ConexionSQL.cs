@@ -10,7 +10,7 @@ namespace CapaDatos
 {
     internal class ConexionSQL
     {
-        private SqlConnection Conexion = new SqlConnection("Data Source=.;Initial Catalog=Tienda2;Integrated Security=True");
+        readonly SqlConnection Conexion = new("Data Source=.;Initial Catalog=Tienda2;Integrated Security=True");
 
         public SqlConnection AbrirConexion()
         {

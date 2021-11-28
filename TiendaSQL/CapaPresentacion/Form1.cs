@@ -13,7 +13,7 @@ namespace CapaPresentacion
     public partial class Form1 : Form
     {
         // Instancion de objetos necesarios para el funcionamiento
-        CN_Productos objetoCN = new CN_Productos();
+        readonly CN_Productos objetoCN = new();
         private string idProducto = "";
         private bool editar = false;
 
@@ -30,7 +30,7 @@ namespace CapaPresentacion
 
         private void MostrarProductos()
         {
-            CN_Productos objeto = new CN_Productos();
+            CN_Productos objeto = new();
             dgvProductos.DataSource = objeto.MostrarProductos();
         }
 
@@ -39,7 +39,7 @@ namespace CapaPresentacion
 
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void BtnGuardar_Click(object sender, EventArgs e)
         {
             // Si el editar == false, se procede con la inserciion de un nuevo elemento a la BD
             // Si es true, se procede con la edicion de elemento de la BD
@@ -76,7 +76,7 @@ namespace CapaPresentacion
 
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (dgvProductos.SelectedRows.Count > 0)
             {
@@ -99,7 +99,7 @@ namespace CapaPresentacion
         {
             if(dgvProductos.SelectedRows.Count > 0)
             {
-                idProducto= dgvProductos.CurrentRow.Cells["Id"].Value.ToString();
+                idProducto = dgvProductos.CurrentRow.Cells["Id"].Value.ToString();
                 objetoCN.EliminarProducto(idProducto);
                 MessageBox.Show("El producto fue eliminado");
                 MostrarProductos();

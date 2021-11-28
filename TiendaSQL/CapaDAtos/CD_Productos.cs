@@ -11,11 +11,11 @@ namespace CapaDatos
 {
     public class CD_Productos
     {
-        private ConexionSQL conexion = new ConexionSQL();
+        private readonly ConexionSQL conexion = new();
 
-        SqlDataReader leer;
-        DataTable dtProductos=new DataTable();
-        SqlCommand cmd = new SqlCommand();
+        SqlDataReader? leer;
+        readonly DataTable dtProductos=new();
+        readonly SqlCommand cmd = new();
 
 
         public DataTable Mostrar()
