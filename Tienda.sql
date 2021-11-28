@@ -17,17 +17,17 @@ go
 insert into Producto
 values
 	('Gaseosa','3 litros','marcacola',7.5,24),
-	('Chocolate','Tableta 100 gramos','iberica',12.5,36)
+	('Chocolate','Tableta 100 gramos','iberica',12.5,36);
 
 
 
----PROCEDIMIENTOS ALMACENADOS
-create proc MostrarProductos
+---CREACION DE PROCEDIMIENTOS ALMACENADOS
+create procedure MostrarProductos
 as
 	select *from Producto
 go
 
-create proc InsetarProductos
+create procedure InsetarProductos
 	@nombre nvarchar (100),
 	@descrip nvarchar (100),
 	@marca nvarchar (100),
@@ -37,15 +37,13 @@ as
 	insert into Producto values (@nombre,@descrip,@marca,@precio,@stock)
 go
 
-exec InsetarProductos 'qw','qw','qw',12,12
-
-create proc EliminarProductos
+create procedure EliminarProductos
 @idpro int
 as
 	delete from Producto where Id=@idpro
 go
 
-create proc EditarProductos
+create procedure EditarProductos
 	@nombre nvarchar (100),
 	@descrip nvarchar (100),
 	@marca nvarchar (100),
