@@ -33,5 +33,9 @@ namespace CapaNegocio
             objetoCD.Editar(nombre, descripcion, marca, Convert.ToDouble(precio), Convert.ToInt32(stock), Convert.ToInt32(id));
         }
 
+        public void EliminarProducto(string id)
+        {
+            objetoCD.Eliminar(Convert.ToInt32(id));
+        }
     }
 }

@@ -41,5 +41,12 @@ namespace CapaDatos
             cmd.CommandText = $"exec EditarProductos '{nombre}','{descripcion}','{marca}',{precio},{stock},{id}";
             cmd.ExecuteNonQuery();
         }
+
+        public void Eliminar (int id)
+        {
+            cmd.Connection = conexion.AbrirConexion();
+            cmd.CommandText = $"exec EliminarProductos {id}";
+            cmd.ExecuteNonQuery();
+        }
     }
 }

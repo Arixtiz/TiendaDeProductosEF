@@ -60,6 +60,7 @@ namespace CapaPresentacion
                     objetoCN.EditarProducto(txtNombre.Text, txtDescripcion.Text, txtMarca.Text, txtPrecio.Text, txtStock.Text, idProducto);
                     MessageBox.Show("Ediccion correcta");
                     MostrarProductos();
+                    Limpieza();
                     editar = false;
                 }
                 catch (Exception ex) 
@@ -86,6 +87,32 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("Selecciones una fila a editar");
             }
+        }
+
+        private void Limpieza()
+        {
+            txtNombre.Clear();
+            txtMarca.Clear();
+            txtDescripcion.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(dgvProductos.SelectedRows.Count > 0)
+            {
+                idProducto= dgvProductos.CurrentRow.Cells["Id"].Value.ToString();
+                objetoCN.EliminarProducto(idProducto);
+                MessageBox.Show("El producto fue eliminado");
+                MostrarProductos();
+            }
+            else
+            {
+                MessageBox.Show("Selecciones una fila");
+            }
+
         }
     }
 }
