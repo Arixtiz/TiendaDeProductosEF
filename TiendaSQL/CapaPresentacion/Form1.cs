@@ -12,6 +12,7 @@ namespace CapaPresentacion
 
     public partial class Form1 : Form
     {
+        // Instancion de objetos necesarios para el funcionamiento
         CN_Productos objetoCN = new CN_Productos();
         private string idProducto = "";
         private bool editar = false;
@@ -23,6 +24,7 @@ namespace CapaPresentacion
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Carga del DataGredView en el formulario
             MostrarProductos();
         }
 
@@ -32,17 +34,20 @@ namespace CapaPresentacion
             dgvProductos.DataSource = objeto.MostrarProductos();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Si el editar == false, se procede con la inserciion de un nuevo elemento a la BD
+            // Si es true, se procede con la edicion de elemento de la BD
+
             if (editar == false) 
             { 
                 try
-                {
+                {   
 
                     objetoCN.InsertarProducto(txtNombre.Text, txtDescripcion.Text, txtMarca.Text, txtPrecio.Text, txtStock.Text);
                     MessageBox.Show("Insecion correcta");
@@ -89,15 +94,6 @@ namespace CapaPresentacion
             }
         }
 
-        private void Limpieza()
-        {
-            txtNombre.Clear();
-            txtMarca.Clear();
-            txtDescripcion.Clear();
-            txtPrecio.Clear();
-            txtStock.Clear();
-
-        }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -112,6 +108,16 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("Selecciones una fila");
             }
+
+        }
+
+        private void Limpieza()
+        {
+            txtNombre.Clear();
+            txtMarca.Clear();
+            txtDescripcion.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
 
         }
     }
