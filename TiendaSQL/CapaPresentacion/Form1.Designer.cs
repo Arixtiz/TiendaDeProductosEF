@@ -55,16 +55,6 @@
             this.dgvProductos.Size = new System.Drawing.Size(598, 344);
             this.dgvProductos.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(710, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(789, 72);
