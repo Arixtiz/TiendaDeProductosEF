@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -173,7 +172,6 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProductos);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -187,7 +185,6 @@
         #endregion
 
         private DataGridView dgvProductos;
-        private Label label1;
         private TextBox txtNombre;
         private TextBox txtDescripcion;
         private Label label2;
