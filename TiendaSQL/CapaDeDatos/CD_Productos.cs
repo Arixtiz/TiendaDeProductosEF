@@ -46,8 +46,6 @@ namespace CapaDatos
             //producto.Stock = stock;
 
             //entities.Producto.Add(producto);
-            //entities.SaveChanges();
-
 
             cmd.Connection = conexion.AbrirConexion();
             cmd.CommandText = $"exec InsetarProductos '{nombre}','{descripcion}','{marca}',{precio},{stock}";
