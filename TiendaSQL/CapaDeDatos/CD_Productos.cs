@@ -9,10 +9,10 @@ using CapaDeDatos.Models;
 
 namespace CapaDatos
 {
+    // Capa a cargo de realizar las transacciones con la base de datos
     public class CD_Productos
     {
         private ConexionSQL conexion = new ConexionSQL();
-
         SqlDataReader leer;
         DataTable dtProductos=new DataTable();
         SqlCommand cmd = new SqlCommand();

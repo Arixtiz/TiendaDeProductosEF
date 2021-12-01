@@ -11,6 +11,10 @@ using CapaNegocio;
 
 namespace CapaDePresentacion
 {
+
+    // NOTA: al ser la capa de presentacion, no se hacen ningun tipo de conversion en las entradas
+    // para no interferir con el funcionamiento de las demas capas.
+
     public partial class Form1 : Form
     {
         // Instancion de objetos necesarios para el funcionamiento
@@ -31,6 +35,9 @@ namespace CapaDePresentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            // Se verifica que se este posicionaddo en una fila para sacar el ID de la misma y
+            // proceder con la eliminacion 
+
             if (dgvProductos.SelectedRows.Count > 0)
             {
                 idProducto = dgvProductos.CurrentRow.Cells["Id"].Value.ToString();
@@ -46,6 +53,9 @@ namespace CapaDePresentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            // Se valida que se encuentre sobre una fila para sacar su Id y
+            // se procede a mostrar la informacion actual para actualizarla
+
             if (dgvProductos.SelectedRows.Count > 0)
             {
                 editar = true;
