@@ -16,6 +16,14 @@
           <Property Name="Precio" Type="float" />
           <Property Name="Stock" Type="int" />
         </EntityType>
+        <Function Name="EditarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="descrip" Type="nvarchar" Mode="In" />
+          <Parameter Name="marca" Type="nvarchar" Mode="In" />
+          <Parameter Name="precio" Type="float" Mode="In" />
+          <Parameter Name="stock" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="EliminarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idpro" Type="int" Mode="In" />
         </Function>
@@ -46,8 +54,16 @@
           <Property Name="Precio" Type="Double" />
           <Property Name="Stock" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="TiendaEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TiendaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <FunctionImport Name="EditarProductos">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descrip" Mode="In" Type="String" />
+            <Parameter Name="marca" Mode="In" Type="String" />
+            <Parameter Name="precio" Mode="In" Type="Double" />
+            <Parameter Name="stock" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="EliminarProductos">
             <Parameter Name="idpro" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -73,7 +89,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TiendaModelStoreContainer" CdmEntityContainer="TiendaEntities2">
+        <EntityContainerMapping StorageEntityContainer="TiendaModelStoreContainer" CdmEntityContainer="TiendaEntities">
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="TiendaModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
@@ -86,6 +102,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="EditarProductos" FunctionName="TiendaModel.Store.EditarProductos" />
           <FunctionImportMapping FunctionImportName="EliminarProductos" FunctionName="TiendaModel.Store.EliminarProductos" />
           <FunctionImportMapping FunctionImportName="InsetarProductos" FunctionName="TiendaModel.Store.InsetarProductos" />
           <FunctionImportMapping FunctionImportName="MostrarProductos" FunctionName="TiendaModel.Store.MostrarProductos">

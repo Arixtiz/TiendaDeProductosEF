@@ -15,10 +15,10 @@ namespace CapaDeDatos.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class TiendaEntities2 : DbContext
+    public partial class TiendaEntities : DbContext
     {
-        public TiendaEntities2()
-            : base("name=TiendaEntities2")
+        public TiendaEntities()
+            : base("name=TiendaEntities")
         {
         }
     
@@ -28,6 +28,35 @@ namespace CapaDeDatos.Models
         }
     
         public virtual DbSet<Producto> Producto { get; set; }
+    
+        public virtual int EditarProductos(string nombre, string descrip, string marca, Nullable<double> precio, Nullable<int> stock, Nullable<int> id)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var descripParameter = descrip != null ?
+                new ObjectParameter("descrip", descrip) :
+                new ObjectParameter("descrip", typeof(string));
+    
+            var marcaParameter = marca != null ?
+                new ObjectParameter("marca", marca) :
+                new ObjectParameter("marca", typeof(string));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("precio", precio) :
+                new ObjectParameter("precio", typeof(double));
+    
+            var stockParameter = stock.HasValue ?
+                new ObjectParameter("stock", stock) :
+                new ObjectParameter("stock", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditarProductos", nombreParameter, descripParameter, marcaParameter, precioParameter, stockParameter, idParameter);
+        }
     
         public virtual int EliminarProductos(Nullable<int> idpro)
         {
